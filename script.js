@@ -19,7 +19,10 @@ const gameBoard = (()=>{
         [2,5,8]
     ];
     
-    //empty arrays for pushing values from players
+    //array for pushing values from our players
+    let gameBoardArray = [];
+
+    //arrays for pushing values from each players
     let choosenArray1 = [];
     let choosenArray2 = [];
     
@@ -33,15 +36,11 @@ const gameBoard = (()=>{
         player2.addEventListener('click', () => choosenBtn = 'player2');
         cell.forEach((cell)=>{
             cell.addEventListener('click',()=>{
-                if(choosenBtn == 'player1'){
+                if(choosenBtn == 'player1' && cell.textContent == ''){
                     cell.textContent = 'X';
-                    choosenArray1.push(cell.id);
-                    console.log(choosenArray1);
                 }
-                else if(choosenBtn == 'player2'){
+                else if(choosenBtn == 'player2' && cell.textContent == ''){
                     cell.textContent = 'O';
-                    choosenArray2.push(cell.id);
-                    console.log(choosenArray2);
                 }
                                     
             })
