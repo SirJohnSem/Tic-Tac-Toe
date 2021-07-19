@@ -15,13 +15,11 @@ const gameBoard = (()=>{
     //get our marks from players - X or O
     const getPlayerMark = (function(){
         const cell = document.querySelectorAll('.cell');
-        const playerOneBtn = document.querySelector('#player1');
-        const playerTwoBtn = document.querySelector('#player2');
+        const start = document.querySelector('.startBtn');
         const showResult = document.querySelector('.showResult');
         let choosenBtn;
         
-        playerOneBtn.addEventListener('click',() => choosenBtn = player1.status);
-        playerTwoBtn.addEventListener('click', () => choosenBtn = player2.status);
+        start.addEventListener('click',() => choosenBtn = player1.status);
         cell.forEach((cell)=>{
             cell.addEventListener('click',()=>{
                 if(choosenBtn == player1.status && cell.textContent == ''){
@@ -36,8 +34,13 @@ const gameBoard = (()=>{
                     
                     //show player1 as a winner
                     if(compareArrays(choosenArray1)){
-                        showResult.textContent =  "Player 1 is a WINNER!"                        
+                        showResult.textContent =  "Player 1 is the WINNER!"                        
                     };
+                    
+                    //change player1 turn to player2 turn
+                    player1.status = false;
+                    player2.status = true;
+                                                                                
                 }
                 else if(choosenBtn == player2.status && cell.textContent == ''){
                     cell.textContent = player2.mark;
@@ -51,8 +54,13 @@ const gameBoard = (()=>{
                     
                     //show player2 as a winner
                     if(compareArrays(choosenArray2)){
-                        showResult.textContent =  "Player 2 is a WINNER!"                        
+                        showResult.textContent =  "Player 2 is the WINNER!"                        
                     };
+                    
+                    //change player2 turn to player1 turn
+                    player1.status = true;
+                    
+                                    
                 }
             })
         })
