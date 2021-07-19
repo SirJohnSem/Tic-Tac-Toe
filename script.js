@@ -10,29 +10,49 @@ const gameBoard = (()=>{
     //arrays for pushing values from each players
     let choosenArray1 = [];
     let choosenArray2 = [];
-    
+    let commonArray = [];
     
     //get our marks from players - X or O
     const getPlayerMark = (function(){
         const cell = document.querySelectorAll('.cell');
         const playerOneBtn = document.querySelector('#player1');
         const playerTwoBtn = document.querySelector('#player2');
+        const showResult = document.querySelector('.showResult');
         let choosenBtn;
+        
         playerOneBtn.addEventListener('click',() => choosenBtn = player1.status);
         playerTwoBtn.addEventListener('click', () => choosenBtn = player2.status);
         cell.forEach((cell)=>{
             cell.addEventListener('click',()=>{
                 if(choosenBtn == player1.status && cell.textContent == ''){
                     cell.textContent = player1.mark;
+                    commonArray.push(cell.id);
                     choosenArray1.push(parseInt(cell.id));
-
-                    compareArrays(choosenArray1);
+                    
+                    //show draw result if commonArray is full
+                    if(getDrawResult()){
+                        showResult.textContent =  "It's DRAW!"                         
+                    };
+                    
+                    //show player1 as a winner
+                    if(compareArrays(choosenArray1)){
+                        showResult.textContent =  "Player 1 is a WINNER!"                        
+                    };
                 }
                 else if(choosenBtn == player2.status && cell.textContent == ''){
                     cell.textContent = player2.mark;
+                    commonArray.push(parseInt(cell.id));
                     choosenArray2.push(parseInt(cell.id));
                     
-                    compareArrays(choosenArray2);
+                    //show draw result if commonArray is full
+                    if(getDrawResult()){
+                        showResult.textContent =  "It's DRAW!"                         
+                    };
+                    
+                    //show player2 as a winner
+                    if(compareArrays(choosenArray2)){
+                        showResult.textContent =  "Player 2 is a WINNER!"                        
+                    };
                 }
             })
         })
@@ -41,8 +61,8 @@ const gameBoard = (()=>{
 
     //compare arrays from players with possible win combinations
     const compareArrays =(function(getArray){
-        const showResult = document.querySelector('.showResult');
-        const winArray = {  //possible win combinations
+        //possible win combinations
+        const winArray = {  
             one: [0,1,2],
             two: [3,4,5],
             three: [6,7,8],
@@ -56,34 +76,40 @@ const gameBoard = (()=>{
         //start compare arrays, when player check at least 3 marks
         if(getArray.length>2){
             if(winArray.one.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };
             if(winArray.two.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };
             if(winArray.three.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };
             if(winArray.four.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };
             if(winArray.five.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };
             if(winArray.six.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };
             if(winArray.seven.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };                                                                 
             if(winArray.eight.every((a)=>(getArray.includes(a)))){
-                return showResult.textContent = "You are Winner!"
+                return true
             };
         }
     });
+
+    //check commonArray length
+    function getDrawResult(){
+        if(commonArray.length===9){
+            return true;
+        }
+    }
     
       
-       
 })();
 
  
