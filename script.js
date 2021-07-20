@@ -36,6 +36,7 @@ const gameBoard = (()=>{
                             cell.textContent = player1.mark;
                             commonArray.push(cell.id);
                             choosenArray1.push(parseInt(cell.id));
+                            turnPlayerTwo();
                             
                             //show draw result if commonArray is full
                             if(getDrawResult()){
@@ -58,7 +59,8 @@ const gameBoard = (()=>{
                             cell.textContent = player2.mark;
                             commonArray.push(parseInt(cell.id));
                             choosenArray2.push(parseInt(cell.id));
-                            
+                            turnPlayerOne();
+
                             //show draw result if commonArray is full
                             if(getDrawResult()){
                                 showResult.textContent =  "It's DRAW!"                         
@@ -132,6 +134,22 @@ const gameBoard = (()=>{
             return true;
         }
     });
+    
+    //display that player2 need turn now
+    function turnPlayerTwo(){
+        const playerOne = document.querySelector('#player1');
+        const playerTwo = document.querySelector('#player2');
+        playerTwo.style.backgroundColor = 'red';
+        playerOne.style.backgroundColor = 'white';
+    }
+    
+    //display that player1 need turn now
+    function turnPlayerOne(){
+        const playerOne = document.querySelector('#player1');
+        const playerTwo = document.querySelector('#player2');
+        playerOne.style.backgroundColor = 'green';
+        playerTwo.style.backgroundColor = 'white';
+    }
 
 })();
 
