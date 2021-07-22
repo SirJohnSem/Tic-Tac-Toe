@@ -3,7 +3,8 @@ body{
     text-align: center;
     height: 100vh;
     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
-   }
+    font-family: 'Otomanopee One', sans-serif;
+}
 
 h1{
     text-align: center;
@@ -21,7 +22,7 @@ h1{
     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     backdrop-filter: blur(8px);
     align-items: center;
-    font-family:Arial,  sans-serif;
+    font-family:'Otomanopee One', sans-serif;
     font-weight: bold;
 }
 
@@ -71,14 +72,13 @@ h1{
     color: white;
     font-weight: bold;
     border-radius: 8px;
+    font-family:'Otomanopee One', sans-serif;
 }
 
 .startBtn:hover{
     background-color: #8a2978;
     cursor: pointer;   
 }
-
-
 
 /* buttons style*/
 button{
@@ -89,7 +89,18 @@ button{
 }
 
 .playersBtn{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.playerturn{
+    width:150px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.playerIcon{
+    width: 20px;
 }
 
 /* table's styles */
@@ -112,9 +123,36 @@ td {
       background-color: white;
       border-radius: 4px;
       color: rgb(88, 24, 94);
-      font-family:Arial,  sans-serif;
+      font-family:'Otomanopee One', sans-serif;
       font-weight: bold;
       font-size: 20px;
   }
 
- 
+  .cell:hover{
+      cursor: pointer;
+  }
+  
+  /*result area*/
+  .showResult{
+      font-weight: bold;
+      font-family:'Otomanopee One', sans-serif;
+      color: white;
+      margin-top: 1em;
+      margin-bottom: 1em;
+  }
+
+  .restartBtn{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: rgb(203,114,176);
+    width: 20em;
+    height: 5em;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    font-family:'Otomanopee One', sans-serif;
+  }
+
+  .restartBtn:hover{
+    background-color: #8a2978;
+  }

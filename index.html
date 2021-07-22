@@ -4,23 +4,36 @@
 <head>
     <meta charset="utf-8">
     <link href="style.css" rel = "stylesheet" type = "text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
-    <h1>TIC-TAC-TOE</h1>
+    <h1>TIC TAC TOE</h1>
     <div class = "startPage">
         <h1>TIC TAC TOE</h1>
         <button class = "startBtn">START THE GAME</button>
         <div class="welcomePlayersCards">
-            <div id = "welcomePlayer1">Player 1</div>
-            <p>VS</p>
-            <div id = "welcomePlayer2">Player 2</div>
+            <div id = "welcomePlayer1">
+                <h2>PLAYER 1</h2>
+                <img src = "icons/X.svg" class = "icons">
+            </div>
+            <div id = "vs">VS</div>
+            <div id = "welcomePlayer2">
+                <h2>PLAYER 2</h2>
+                <img src = "icons/0.svg" class = "icons">
+            </div>
         </div>
     </div>
     
     <div class = "playersBtn">
-        <button id="player1">X</button>
-        <button id="player2">O</button>
+        <button id="player1" class = "playerturn">
+            <img src = "icons/x-small.svg" class = "playerIcon">
+        </button>
+        <button id="player2" class = "playerturn">
+            <img src = "icons/o-small.svg" class = "playerIcon">
+        </button>
     </div>
         
     <table>
@@ -40,10 +53,13 @@
             <td class = "cell" id="8"></td>
         </tr>
     </table>
+    
+    <div class = "gameResult">
+        <div class = "showResult"></div>
+        <button class = "restartBtn">RESTART THE GAME</button>        
+    </div>
+    
 
-    <div class = "showResult"></div>
-
-    <button class = "restartBtn">RESTART</button>
 </body>
 <script src = "script.js"></script>
 </html>

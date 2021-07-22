@@ -37,13 +37,11 @@ const gameBoard = (()=>{
                         //show draw result if commonArray is full
                         if(getDrawResult()){
                             showResult.textContent =  "It's DRAW!"
-                                                     
                         };
                         
                         //show player1 as a winner
                         if(compareArrays(choosenArray1)){
                             showResult.textContent =  "Player 1 is the WINNER!"
-                                                    
                         };
                         
                         //change player1 turn to player2 turn
@@ -68,7 +66,7 @@ const gameBoard = (()=>{
                         //show player2 as a winner
                         if(compareArrays(choosenArray2)){
                             showResult.textContent =  "Player 2 is the WINNER!"
-                                                    
+                                                  
                         };
                         
                         //change player2 turn to player1 turn
@@ -97,7 +95,7 @@ const gameBoard = (()=>{
             cell.forEach((cell)=>cell.textContent = '');
             showResult.textContent = '';
         }
-        
+       
         
 })();
     
@@ -158,9 +156,15 @@ const gameBoard = (()=>{
         const playerOne = document.querySelector('#player1');
         const playerTwo = document.querySelector('#player2');
         playerTwo.style.backgroundColor = 'rgb(199,119,185)';
-        playerTwo.textContent = "O's turn now";
+        playerTwo.textContent = "O";
+        playerTwo.style.color = 'white';
+        playerTwo.style.fontSize = '25px';
+        playerTwo.style.fontWeight = 'bold';
         playerOne.style.backgroundColor = 'white';
+        playerOne.style.color = 'rgb(203,114,176)';
+        playerOne.style.fontSize = '25px';
         playerOne.textContent = "X";
+        playerOne.style.fontWeight = 'bold';
     }
     
     //display that player1(X) need turn now
@@ -168,9 +172,14 @@ const gameBoard = (()=>{
         const playerOne = document.querySelector('#player1');
         const playerTwo = document.querySelector('#player2');
         playerOne.style.backgroundColor = 'rgb(199,119,185)';
-        playerOne.textContent = "X's turn now";
+        playerOne.textContent = "X";
+        playerOne.style.color = 'white';
+        playerOne.style.fontSize = '25px';
         playerTwo.style.backgroundColor = 'white';
-        playerTwo.textContent = "O"
+        playerTwo.style.color = 'rgb(203,114,176)';
+        playerTwo.style.fontSize = '25px';
+        playerTwo.textContent = "O";
+        playerTwo.style.fontWeight = 'bold';
     }
 
 })();
