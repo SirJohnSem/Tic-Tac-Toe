@@ -18,72 +18,90 @@ const gameBoard = (()=>{
         const start = document.querySelector('.startBtn');
         const showResult = document.querySelector('.showResult');
         const restart = document.querySelector('.restartBtn');
+        const startPage = document.querySelector('.startPage');
         let choosenBtn;
         
+        function playGame(){
+            restartGame();
+            choosenBtn = player1.status;
+            cell.forEach((cell)=>{
+                cell.addEventListener('click',()=>{
+                    
+                    //get display mark from player1
+                    if(choosenBtn == player1.status && cell.textContent == ''){
+                        cell.textContent = player1.mark;
+                        commonArray.push(cell.id);
+                        choosenArray1.push(parseInt(cell.id));
+                        turnPlayerTwo();
+                        
+                        //show draw result if commonArray is full
+                        if(getDrawResult()){
+                            showResult.textContent =  "It's DRAW!"
+                                                     
+                        };
+                        
+                        //show player1 as a winner
+                        if(compareArrays(choosenArray1)){
+                            showResult.textContent =  "Player 1 is the WINNER!"
+                                                    
+                        };
+                        
+                        //change player1 turn to player2 turn
+                        player1.status = false;
+                        player2.status = true;
+                                                                                    
+                    }
+    
+                    //get display mark from player2
+                    else if(choosenBtn == player2.status && cell.textContent == ''){
+                        cell.textContent = player2.mark;
+                        commonArray.push(parseInt(cell.id));
+                        choosenArray2.push(parseInt(cell.id));
+                        turnPlayerOne();
+
+                        //show draw result if commonArray is full
+                        if(getDrawResult()){
+                            showResult.textContent =  "It's DRAW!"
+                                                     
+                        };
+                        
+                        //show player2 as a winner
+                        if(compareArrays(choosenArray2)){
+                            showResult.textContent =  "Player 2 is the WINNER!"
+                                                    
+                        };
+                        
+                        //change player2 turn to player1 turn
+                        player1.status = true;
+                        
+                    }
+                })
+            })
+        };
+
         //start and restart game by clicking buttons
         const gameController = (()=>{
-            start.addEventListener('click',() => choosenBtn = player1.status,
-                                                 playGame());
-            restart.addEventListener('click',() => window.location.reload(),
-                                                   choosenBtn = player1.status,
-                                                   playGame());
-            function playGame(){
-                cell.forEach((cell)=>{
-                    cell.addEventListener('click',()=>{
-                        
-                        //get display mark from player1
-                        if(choosenBtn == player1.status && cell.textContent == ''){
-                            cell.textContent = player1.mark;
-                            commonArray.push(cell.id);
-                            choosenArray1.push(parseInt(cell.id));
-                            turnPlayerTwo();
-                            
-                            //show draw result if commonArray is full
-                            if(getDrawResult()){
-                                showResult.textContent =  "It's DRAW!"                         
-                            };
-                            
-                            //show player1 as a winner
-                            if(compareArrays(choosenArray1)){
-                                showResult.textContent =  "Player 1 is the WINNER!"                        
-                            };
-                            
-                            //change player1 turn to player2 turn
-                            player1.status = false;
-                            player2.status = true;
-                                                                                        
-                        }
-        
-                        //get display mark from player2
-                        else if(choosenBtn == player2.status && cell.textContent == ''){
-                            cell.textContent = player2.mark;
-                            commonArray.push(parseInt(cell.id));
-                            choosenArray2.push(parseInt(cell.id));
-                            turnPlayerOne();
-
-                            //show draw result if commonArray is full
-                            if(getDrawResult()){
-                                showResult.textContent =  "It's DRAW!"                         
-                            };
-                            
-                            //show player2 as a winner
-                            if(compareArrays(choosenArray2)){
-                                showResult.textContent =  "Player 2 is the WINNER!"                        
-                            };
-                            
-                            //change player2 turn to player1 turn
-                            player1.status = true;
-                            
-                        }
-                    })
-                })
-            };
             
+            start.addEventListener('click',() =>startPage.style.display = 'none', 
+                                                playGame());
+                                              
+            restart.addEventListener('click',() => restartGame());
+                                                   
         })();
-
+        
+        //restart game
+        function restartGame(){
+            choosenArray1 = [];
+            choosenArray2 = [];
+            commonArray = [];
+            cell.forEach((cell)=>cell.textContent = '');
+            showResult.textContent = '';
+        }
+        
+        
 })();
     
-
+    
     //compare arrays from players with possible win combinations
     const compareArrays =(function(getArray){
 
@@ -135,20 +153,24 @@ const gameBoard = (()=>{
         }
     });
     
-    //display that player2 need turn now
+    //display that player2(O) need turn now
     function turnPlayerTwo(){
         const playerOne = document.querySelector('#player1');
         const playerTwo = document.querySelector('#player2');
-        playerTwo.style.backgroundColor = 'red';
+        playerTwo.style.backgroundColor = 'rgb(199,119,185)';
+        playerTwo.textContent = "O's turn now";
         playerOne.style.backgroundColor = 'white';
+        playerOne.textContent = "X";
     }
     
-    //display that player1 need turn now
+    //display that player1(X) need turn now
     function turnPlayerOne(){
         const playerOne = document.querySelector('#player1');
         const playerTwo = document.querySelector('#player2');
-        playerOne.style.backgroundColor = 'green';
+        playerOne.style.backgroundColor = 'rgb(199,119,185)';
+        playerOne.textContent = "X's turn now";
         playerTwo.style.backgroundColor = 'white';
+        playerTwo.textContent = "O"
     }
 
 })();
