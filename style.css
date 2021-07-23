@@ -1,4 +1,9 @@
 
+ @font-face{
+    font-family:'Otomanopee One';
+    src: url(fonts/OtomanopeeOne-Regular.ttf);
+  }
+
 body{
     text-align: center;
     height: 100vh;
@@ -90,7 +95,7 @@ button{
 
 .playersBtn{
     margin-bottom: 30px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .playerturn{
@@ -142,8 +147,8 @@ td {
   }
 
   .restartBtn{
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     background-color: rgb(203,114,176);
     width: 20em;
     height: 5em;
@@ -151,8 +156,12 @@ td {
     font-weight: bold;
     border-radius: 8px;
     font-family:'Otomanopee One', sans-serif;
+    border: solid 2px white;
   }
 
   .restartBtn:hover{
     background-color: #8a2978;
+    cursor: pointer;
   }
+
+ 
