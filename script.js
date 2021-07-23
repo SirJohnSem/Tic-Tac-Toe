@@ -23,6 +23,7 @@ const gameBoard = (()=>{
         
         function playGame(){
             restartGame();
+            turnPlayerOne();
             choosenBtn = player1.status;
             cell.forEach((cell)=>{
                 cell.addEventListener('click',()=>{
@@ -36,14 +37,16 @@ const gameBoard = (()=>{
                         
                         //show draw result if commonArray is full
                         if(getDrawResult()){
-                            showResult.textContent =  "It's DRAW!"
+                            showResult.textContent =  "It's DRAW!";
+                            showGameResult();
                         };
-                        
+                                                
                         //show player1 as a winner
                         if(compareArrays(choosenArray1)){
-                            showResult.textContent =  "Player 1 is the WINNER!"
+                            showResult.textContent =  "Player X is the WINNER!"
+                            showGameResult();
                         };
-                        
+                                                
                         //change player1 turn to player2 turn
                         player1.status = false;
                         player2.status = true;
@@ -59,16 +62,16 @@ const gameBoard = (()=>{
 
                         //show draw result if commonArray is full
                         if(getDrawResult()){
-                            showResult.textContent =  "It's DRAW!"
-                                                     
-                        };
-                        
+                            showResult.textContent =  "It's DRAW!";
+                            showGameResult();
+                        };                        
+                                                
                         //show player2 as a winner
                         if(compareArrays(choosenArray2)){
-                            showResult.textContent =  "Player 2 is the WINNER!"
-                                                  
-                        };
-                        
+                            showResult.textContent =  "Player O is the WINNER!"
+                            showGameResult();
+                        };                      
+                                                
                         //change player2 turn to player1 turn
                         player1.status = true;
                         
@@ -89,17 +92,24 @@ const gameBoard = (()=>{
         
         //restart game
         function restartGame(){
+            const gameResult = document.querySelector('.gameResult');
+            gameResult.style.display = 'none';
             choosenArray1 = [];
             choosenArray2 = [];
             commonArray = [];
             cell.forEach((cell)=>cell.textContent = '');
             showResult.textContent = '';
         }
-       
+
+        function showGameResult(){
+            const gameResult = document.querySelector('.gameResult');
+            gameResult.style.display = 'block';                                 
+                       
+        }
+            
         
 })();
-    
-    
+        
     //compare arrays from players with possible win combinations
     const compareArrays =(function(getArray){
 
